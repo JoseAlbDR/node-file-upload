@@ -1,4 +1,17 @@
 {
+  "name": "file-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cloudinary": "^1.40.0",
@@ -18,8 +31,5 @@
     "xss": "^1.0.14",
     "xss-clean": "^0.1.4",
     "yamljs": "^0.3.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.2.2"
   }
 }
