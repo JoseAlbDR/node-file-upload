@@ -18,5 +18,8 @@
     "xss": "^1.0.14",
     "xss-clean": "^0.1.4",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
   }
 }
