@@ -6,6 +6,7 @@ import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 const app = express();
 
+app.use(express.static("./public"));
 app.get("/", (_req, res) => {
   res.send("<h1>File Upload Starter</h1>");
 });
