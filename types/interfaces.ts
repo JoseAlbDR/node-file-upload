@@ -1,6 +1,13 @@
 import { Request } from "express";
-import mongoose, { Model } from "mongoose";
+import { Model } from "mongoose";
 import { MongoError } from "mongodb";
+
+// Poduct interface
+export interface IProduct {
+  name: string;
+  price: number;
+  image: string;
+}
 
 // User interfaces
 export type UserModel = Model<IUser, { [_ in never]: never }, IUserMethods>;
@@ -64,78 +71,13 @@ export interface ILogin {
   password: string;
 }
 
-// Job interfaces
-export interface IJobIdRequest extends Request {
-  params: {
-    jobId: string;
-  };
-}
-
-export interface IJobRequest extends Request {
-  body: IJob;
-}
-
-export interface IJob {
-  _id?: string;
-  company: string;
-  position: string;
-  jobLocation: string;
-  status?: StatusTypes;
-  jobType?: JobTypes;
-  createdBy?: mongoose.SchemaDefinitionProperty<mongoose.Types.ObjectId>;
-  createdAt?: string;
-}
-
-export interface IUpdateJobRequest extends Request {
-  params: {
-    jobId: string;
-  };
-  body: IUpdateJob;
-}
-
-export interface IUpdateJob {
-  company?: string;
-  position?: string;
-  status?: StatusTypes;
-  jobType?: JobTypes;
-  jobLocation?: string;
-}
-
-type JobTypes = "full-time" | "part-time" | "remote" | "internship";
-type StatusTypes = "interview" | "declined" | "pending";
-
-export type IJobPosition = {
-  $regex: string;
-  $options: "i";
-};
-
-export interface IJobQuery {
-  search?: string;
-  status?: "all" | StatusTypes;
-  jobType?: "all" | JobTypes;
-  sort?: string;
-  page?: number;
-  limit?: number;
-}
-
-export interface IMongoJobQuery {
-  createdBy: mongoose.SchemaDefinitionProperty<mongoose.Types.ObjectId>;
-  position?: IJobPosition;
-  status?: "all" | StatusTypes;
-  jobType?: "all" | JobTypes;
-  sort?: string;
-  page?: number;
-}
-
 // Validation interfaces
 export type CustomRequest =
   | IRegisterRequest
   | ILoginRequest
-  | IJobRequest
-  | IUpdateJobRequest
   | IUpdateUserRequest;
 
-export type CustomBody = ILogin | IUser | IJob | IUpdateJob | IUpdateUser;
+export type CustomBody = ILogin | IUser | IUpdateUser;
 
 // JWT interfaces
 export interface IDecodedToken {
