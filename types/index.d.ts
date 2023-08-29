@@ -8,7 +8,7 @@ declare global {
       jobQuery: IJobQuery;
       user: {
         userId: string;
-        testUser: boolean;
+        name: string;
       };
     }
   }
