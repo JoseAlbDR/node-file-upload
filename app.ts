@@ -1,5 +1,6 @@
 import "express-async-errors";
 import "dotenv/config";
+import fileUpload from "express-fileupload";
 import express from "express";
 import connectDB from "./db/connect";
 import notFoundMiddleware from "./middleware/not-found";
@@ -7,6 +8,7 @@ import errorHandlerMiddleware from "./middleware/error-handler";
 import productRouter from "./routes/productRoutes";
 const app = express();
 app.use(express.json());
+app.use(fileUpload());
 app.use(express.static("./public"));
 app.get("/", (_req, res) => {
   res.send("<h1>File Upload Starter</h1>");
