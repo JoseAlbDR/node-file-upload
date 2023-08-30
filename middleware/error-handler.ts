@@ -40,7 +40,7 @@ const errorHandlerMiddleware = (
     return res.status(StatusCodes.BAD_REQUEST).json({ msg });
   }
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err });
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err.message);
 };
 
 export default errorHandlerMiddleware;
