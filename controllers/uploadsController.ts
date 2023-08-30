@@ -9,7 +9,7 @@ export const uploadProductImage = async (req: Request, res: Response) => {
   if (!req.files) {
     throw new BadRequestError("Error uploading image");
   }
-  const productImage = req.files.productImg as UploadedFile;
+  const productImage = req.files.image as UploadedFile;
   const imagePath = path.join(
     __dirname,
     "../public/uploads/" + `${productImage.name}`
