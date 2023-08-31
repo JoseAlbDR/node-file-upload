@@ -7,9 +7,20 @@ import { BadRequestError } from "../errors";
 export const uploadProductImage = async (req: Request, res: Response) => {
   console.log(req.files);
   if (!req.files) {
-    throw new BadRequestError("Error uploading image");
+    throw new BadRequestError("No File Uploaded");
   }
   const productImage = req.files.image as UploadedFile;
+
+  if (!productImage.mimetype.startsWith("image")) {
+    throw new BadRequestError("Please Upload Image");
+  }
+
+  const maxSize = 1024 * 1024;
+
+  if (productImage.size > maxSize) {
+    throw new BadRequestError("Please Upload Image Less Than 1MB");
+  }
+
   const imagePath = path.join(
     __dirname,
     "../public/uploads/" + `${productImage.name}`
