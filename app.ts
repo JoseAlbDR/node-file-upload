@@ -1,5 +1,6 @@
 import "express-async-errors";
 import "dotenv/config";
+import { v2 as cloudinary } from "cloudinary";
 import fileUpload from "express-fileupload";
 import express from "express";
 import connectDB from "./db/connect";
@@ -7,6 +8,11 @@ import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 import productRouter from "./routes/productRoutes";
 const app = express();
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 app.use(express.static("./public"));
 app.use(express.json());
 app.use(fileUpload());

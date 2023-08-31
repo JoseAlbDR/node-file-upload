@@ -16,6 +16,9 @@ declare global {
       DATABASE_URL: string;
       JWT_SECRET: string;
       JWT_LIFETIME: string;
+      CLOUD_NAME: string;
+      CLOUD_API_KEY: string;
+      CLOUD_API_SECRET: string;
     }
   }
 }
