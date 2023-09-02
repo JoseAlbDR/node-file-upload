@@ -4,6 +4,7 @@ import { UploadedFile } from "express-fileupload";
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError } from "../errors";
 import { v2 as cloudinary } from "cloudinary";
+import fs from "fs";
 
 export const uploadProductImageLocal = async (req: Request, res: Response) => {
   console.log(req.files);
@@ -39,6 +40,7 @@ export const uploadProductImage = async (req: Request, res: Response) => {
       use_filename: true,
       folder: "file-upload",
     });
+    fs.unlinkSync(tempImage.tempFilePath);
     res.status(StatusCodes.OK).json({ image: { src: result.secure_url } });
   }
 };
