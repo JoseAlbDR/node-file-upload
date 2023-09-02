@@ -9,13 +9,13 @@ import errorHandlerMiddleware from "./middleware/error-handler";
 import productRouter from "./routes/productRoutes";
 const app = express();
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
 });
 app.use(express.static("./public"));
 app.use(express.json());
-app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true }));
 app.get("/", (_req, res) => {
   res.send("<h1>File Upload Starter</h1>");
 });
